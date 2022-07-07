@@ -1,5 +1,7 @@
 package n2exercici1;
 
+import java.util.Objects;
+
 public class Restaurant implements Comparable<Restaurant> {
 	// Atributos
 	private String nom;
@@ -26,6 +28,24 @@ public class Restaurant implements Comparable<Restaurant> {
 
 	public void setPuntuacio(int puntuacio) {
 		this.puntuacio = puntuacio;
+	}
+
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(nom, puntuacio);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Restaurant other = (Restaurant) obj;
+		return Objects.equals(nom, other.nom) && puntuacio == other.puntuacio;
 	}
 
 	@Override
